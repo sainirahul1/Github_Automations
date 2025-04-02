@@ -15,19 +15,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Ensure previous commit is available
+          fetch-depth: 2
 
       - name: Detect Changed Files
         id: changed-files
         run: |
           BEFORE_COMMIT="${{ github.event.before }}"
           if [ -z "$BEFORE_COMMIT" ] || ! git cat-file -e "$BEFORE_COMMIT"^{commit}; then
-            BEFORE_COMMIT=$(git rev-parse HEAD~1)  # Use last commit as fallback
+            BEFORE_COMMIT=$(git rev-parse HEAD~1)
           fi
           
           CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^submissions/' || true)
           echo "Detected changed files: $CHANGED_FILES"
-          
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No file changes detected. Skipping tests."
             exit 0
@@ -58,27 +58,27 @@ jobs:
         if: env.language_C == 'true'
         run: |
           gcc submissions/*.c tests/test.c -o test_runner
-          echo "Running C Test Cases..."
+          if [ $? -ne 0 ]; then exit 1; fi
           ./test_runner | tee test_results_C.log
 
       - name: Compile and Run C++ Tests
         if: env.language_CPP == 'true'
         run: |
           g++ submissions/*.cpp tests/test.cpp -o test_runner_cpp
-          echo "Running C++ Test Cases..."
+          if [ $? -ne 0 ]; then exit 1; fi
           ./test_runner_cpp | tee test_results_CPP.log
 
       - name: Run Python Tests
         if: env.language_Python == 'true'
         run: |
-          echo "Running Python Test Cases..."
           python3 tests/test.py | tee test_results_Python.log
+          if [ $? -ne 0 ]; then exit 1; fi
 
       - name: Compile and Run Java Tests
         if: env.language_Java == 'true'
         run: |
           javac submissions/*.java tests/Test.java
-          echo "Running Java Test Cases..."
+          if [ $? -ne 0 ]; then exit 1; fi
           java -cp submissions:tests Test | tee test_results_Java.log
 
       - name: Upload Test Results
@@ -87,4 +87,3 @@ jobs:
         with:
           name: test-results
           path: test_results_*.log
-
