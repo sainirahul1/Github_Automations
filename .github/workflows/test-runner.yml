@@ -3,7 +3,7 @@ name: Run Code Tests
 on:
   push:
     paths:
-      - "solutions/**"
+      - "submissions/**"
   pull_request:
     paths:
       - "tests/**"
