@@ -25,7 +25,7 @@ jobs:
             BEFORE_COMMIT=$(git rev-parse HEAD~1)  # Use last commit as fallback
           fi
           
-          CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^solutions/' || true)
+          CHANGED_FILES=$(git diff --name-only "$BEFORE_COMMIT" HEAD | grep '^submissions/' || true)
           echo "Detected changed files: $CHANGED_FILES"
           
           if [ -z "$CHANGED_FILES" ]; then
@@ -57,14 +57,14 @@ jobs:
       - name: Compile and Run C Tests
         if: env.language_C == 'true'
         run: |
-          gcc tests/test.c -o test_runner
+          gcc submissions/*.c tests/test.c -o test_runner
           echo "Running C Test Cases..."
           ./test_runner | tee test_results_C.log
 
       - name: Compile and Run C++ Tests
         if: env.language_CPP == 'true'
         run: |
-          g++ tests/test.cpp -o test_runner_cpp
+          g++ submissions/*.cpp tests/test.cpp -o test_runner_cpp
           echo "Running C++ Test Cases..."
           ./test_runner_cpp | tee test_results_CPP.log
 
@@ -77,9 +77,9 @@ jobs:
       - name: Compile and Run Java Tests
         if: env.language_Java == 'true'
         run: |
-          javac tests/Test.java
+          javac submissions/*.java tests/Test.java
           echo "Running Java Test Cases..."
-          java -cp tests Test | tee test_results_Java.log
+          java -cp submissions:tests Test | tee test_results_Java.log
 
       - name: Upload Test Results
         if: always()
@@ -87,3 +87,4 @@ jobs:
         with:
           name: test-results
           path: test_results_*.log
+
