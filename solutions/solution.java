@@ -1,6 +1,4 @@
 import java.util.Arrays;
-
-
 class Solution {
     public int[] sortedSquares(int[] nums) {
         int n = nums.length;
