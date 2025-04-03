@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-sdasdfdasfsdfsd*
+sdasdfdasfsdfsdjdbk
 
 
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
