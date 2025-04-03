@@ -1,27 +1,9 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
-#include "../solutions/solution.cpp" 
-using namespace std;
-vector<int> sortedSquares(vector<int>& nums) {
-    int left = 0, right = nums.size() - 1, pos = nums.size() - 1;
-    vector<int> result(nums.size());
-    
-    while (left <= right) {
-        if (abs(nums[left]) > abs(nums[right])) {
-            result[pos] = nums[left] * nums[left];
-            left++;
-        } else {
-            result[pos] = nums[right] * nums[right];
-            right--;
-        }
-        pos--;
-    }
-    
-    return result;
-}
+#include "../solutions/solution.cpp"  // Include the solution directly
 
 void runTestCases() {
+    Solution solution;  // Create an instance of Solution
+
     vector<vector<int>> testCases = {
         {-10, -3, -2, 0, 1, 5, 7, 12},
         {-10000, -500, -1, 0, 2, 3, 4000},
@@ -29,7 +11,7 @@ void runTestCases() {
         {-7, -3, 2, 3, 11},
         {-6, -5, -3, -1, 0, 2, 3, 4, 8}
     };
-    
+
     vector<vector<int>> expectedOutputs = {
         {0, 1, 4, 9, 25, 49, 100, 144},
         {0, 1, 4, 9, 250000, 16000000, 100000000},
@@ -37,10 +19,10 @@ void runTestCases() {
         {4, 9, 9, 49, 121},
         {0, 1, 4, 9, 9, 16, 25, 36, 64}
     };
-    
+
     for (size_t i = 0; i < testCases.size(); i++) {
-        vector<int> result = sortedSquares(testCases[i]);
-        
+        vector<int> result = solution.sortedSquares(testCases[i]);  // Call the function
+
         cout << "\n------------------------------" << endl;
         cout << "Test Case " << (i + 1) << endl;
         cout << "Given Input: {";
@@ -74,3 +56,4 @@ int main() {
     runTestCases();
     return 0;
 }
+
