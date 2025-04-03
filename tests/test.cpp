@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "../submissions/solution.cpp" 
 using namespace std;
 
 vector<int> sortedSquares(vector<int>& nums) {
