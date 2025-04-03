@@ -4,6 +4,12 @@
 #include "../submissions/solution.cpp" 
 using namespace std;
 
+
+
+
+
+
+
 vector<int> sortedSquares(vector<int>& nums) {
     int left = 0, right = nums.size() - 1, pos = nums.size() - 1;
     vector<int> result(nums.size());
