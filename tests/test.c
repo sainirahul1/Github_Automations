@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 void sortedSquares(int* nums, int size, int* result) {
     int left = 0, right = size - 1, pos = size - 1;
 
