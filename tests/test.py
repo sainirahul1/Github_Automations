@@ -13,9 +13,21 @@ test_cases = [
     ([-3, -3, -3, -3], [9, 9, 9, 9]),
 ]
 
-for i, (input_list, expected) in enumerate(test_cases, 1):
-    result = sortedSquares(input_list)
-    if result == expected:
-        print(f"Test {i}: ✅ Passed")
-    else:
-        print(f"Test {i}: ❌ Failed")
+def run_tests():
+    for i, (input_list, expected) in enumerate(test_cases, 1):
+        try:
+            result = sortedSquares(input_list)
+            if result is None:
+                raise ValueError("Function returned None (possibly not implemented).")
+            if result == expected:
+                print(f"Test {i}: ✅ Passed")
+            else:
+                print(f"Test {i}: ❌ Failed")
+                print(f"  Input:    {input_list}")
+                print(f"  Expected: {expected}")
+                print(f"  Got:      {result}")
+        except Exception as e:
+            print(f"Test {i}: ❌ Error occurred - {e}")
+
+if __name__ == "__main__":
+    run_tests()
