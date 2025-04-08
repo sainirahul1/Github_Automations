@@ -8,7 +8,6 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     while (left <= right) {
         int leftSq = nums[left] * nums[left];
         int rightSq = nums[right] * nums[right];
-
         if (leftSq > rightSq) {
             result[pos--] = leftSq;
             left++;
@@ -20,8 +19,4 @@ int* sortedSquares(int* nums, int numsSize, int* returnSize) {
 
     *returnSize = numsSize;
     return result;
-
-
 }
-
-
