@@ -4,3 +4,6 @@ class SortedSquares {
         return null; // Placeholder return
     }
 }
+
+
+
