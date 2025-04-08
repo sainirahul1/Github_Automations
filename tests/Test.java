@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class TestRunner {
+class TestRunner {
     public static void main(String[] args) {
         int[][] inputs = {
             {-4, -1, 0, 3, 10},
