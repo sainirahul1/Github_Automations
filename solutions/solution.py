@@ -28,3 +28,5 @@ if __name__ == "__main__":
     nums = [-4, -1, 0, 3, 10]
     result = solution.sortedSquares(nums)
     print("Sorted Squares:", result)
+
+
