@@ -18,3 +18,5 @@ class SortedSquares {
          return result;
     }
 }
+
+
