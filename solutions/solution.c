@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
     *returnSize = numsSize; 
 
@@ -38,7 +36,6 @@ void printArray(int* arr, int size) {
     }
     printf("]\n");
 }
-
 
 int main() {
     int nums[] = {-4, -1, 0, 3, 10};
