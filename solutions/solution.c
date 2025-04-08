@@ -1,24 +1,13 @@
 #include <stdlib.h>
 
+/*
+ * Given a sorted array of integers `nums` of size `numsSize`, return a new array containing
+ * the squares of each number, also sorted in non-decreasing order.
+ * 
+ * The function should set the value of `*returnSize` to `numsSize`.
+ */
 int* sortedSquares(int* nums, int numsSize, int* returnSize) {
-    int* result = (int*)malloc(numsSize * sizeof(int));
-    int left = 0, right = numsSize - 1;
-    int pos = numsSize - 1;
-
-    while (left <= right) {
-        int leftSq = nums[left] * nums[left];
-        int rightSq = nums[right] * nums[right];
-        if (leftSq > rightSq) {
-            result[pos--] = leftSq;
-            left++;
-        } else {
-            result[pos--] = rightSq;
-            right--;
-        }
-    }
-
+    // TODO: Implement this function
     *returnSize = numsSize;
-    return result;
+    return NULL; // Placeholder return
 }
-
-
