@@ -1,10 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include <iomanip>
 
-extern int* sortedSquares(int* nums, int numsSize, int* returnSize);
+extern std::vector<int> sortedSquares(const std::vector<int>& nums);
 
 void runTests() {
-    int inputs[10][10] = {
+    std::vector<std::vector<int>> inputs = {
         {-4, -1, 0, 3, 10},
         {-7, -3, 2, 3, 11},
         {1, 2, 3, 4, 5},
@@ -13,8 +14,7 @@ void runTests() {
         {-10, -10, -5, 0, 5, 10},
         {2, 2, 2, 2}, {-3, -3, -3, -3}
     };
-    int sizes[10] = {5, 5, 5, 4, 1, 0, 3, 6, 4, 4};
-    int expected[10][10] = {
+    std::vector<std::vector<int>> expected = {
         {0, 1, 9, 16, 100},
         {4, 9, 9, 49, 121},
         {1, 4, 9, 16, 25},
@@ -24,18 +24,11 @@ void runTests() {
         {4, 4, 4, 4}, {9, 9, 9, 9}
     };
 
-    for (int i = 0; i < 10; i++) {
-        int returnSize = 0;
-        int* result = sortedSquares(inputs[i], sizes[i], &returnSize);
-        int pass = 1;
-        for (int j = 0; j < returnSize; j++) {
-            if (!result || result[j] != expected[i][j]) {
-                pass = 0;
-                break;
-            }
-        }
-        printf("Test %d: %s\n", i + 1, pass ? "✅ Passed" : "❌ Failed");
-        if (result) free(result);
+    for (size_t i = 0; i < inputs.size(); ++i) {
+        std::vector<int> result = sortedSquares(inputs[i]);
+        bool pass = (result == expected[i]);
+
+        std::cout << "Test " << (i + 1) << ": " << (pass ? "✅ Passed" : "❌ Failed") << "\n";
     }
 }
 
