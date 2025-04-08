@@ -1,10 +1,6 @@
-#include <iostream>
 #include <vector>
-using namespace std;
 
-class Solution {
-public:
-    vector<int> sortedSquares(vector<int>& nums) {
-        
-};
-
+std::vector<int> sortedSquares(std::vector<int>& nums) {
+    // TODO: Implement your logic
+    return {}; // Placeholder
+}
