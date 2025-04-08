@@ -1,12 +1,20 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "sorted_squares.cpp" // Include your function file
 
-using namespace std;
+extern std::vector<int> sortedSquares(const std::vector<int>& nums);
 
-void runTests() {
-    vector<vector<int>> inputs = {
+void runTest(const std::vector<int>& input, const std::vector<int>& expected, int testNum) {
+    std::vector<int> result = sortedSquares(input);
+    if (result == expected) {
+        std::cout << "Test " << testNum << ": ✅ Passed\n";
+    } else {
+        std::cout << "Test " << testNum << ": ❌ Failed\n";
+    }
+}
+
+int main() {
+    std::vector<std::vector<int>> inputs = {
         {-4, -1, 0, 3, 10},
         {-7, -3, 2, 3, 11},
         {1, 2, 3, 4, 5},
@@ -19,7 +27,7 @@ void runTests() {
         {-3, -3, -3, -3}
     };
 
-    vector<vector<int>> expected = {
+    std::vector<std::vector<int>> expected = {
         {0, 1, 9, 16, 100},
         {4, 9, 9, 49, 121},
         {1, 4, 9, 16, 25},
@@ -32,14 +40,9 @@ void runTests() {
         {9, 9, 9, 9}
     };
 
-    for (int i = 0; i < inputs.size(); i++) {
-        vector<int> res = sortedSquares(inputs[i]);
-        bool pass = res == expected[i];
-        cout << "Test " << i + 1 << ": " << (pass ? "✅ Passed" : "❌ Failed") << endl;
+    for (size_t i = 0; i < inputs.size(); ++i) {
+        runTest(inputs[i], expected[i], i + 1);
     }
-}
 
-int main() {
-    runTests();
     return 0;
 }

@@ -1,4 +1,4 @@
-from sorted_squares import sorted_squares
+from solutions.solution import sortedSquares
 
 test_cases = [
     ([-4, -1, 0, 3, 10], [0, 1, 9, 16, 100]),
@@ -13,6 +13,9 @@ test_cases = [
     ([-3, -3, -3, -3], [9, 9, 9, 9]),
 ]
 
-for idx, (inp, expected) in enumerate(test_cases):
-    result = sorted_squares(inp)
-    print(f"Test {idx + 1}: {'✅ Passed' if result == expected else '❌ Failed'}")
+for i, (input_list, expected) in enumerate(test_cases, 1):
+    result = sortedSquares(input_list)
+    if result == expected:
+        print(f"Test {i}: ✅ Passed")
+    else:
+        print(f"Test {i}: ❌ Failed")

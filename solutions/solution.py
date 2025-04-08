@@ -1,3 +1,2 @@
-def sorted_squares(nums):
-    # TODO: Implement your logic
-    return []
+def sortedSquares(nums):
+    return sorted(x * x for x in nums)

@@ -16,6 +16,7 @@ void runTests() {
         {2, 2, 2, 2},
         {-3, -3, -3, -3}
     };
+
     int sizes[10] = {5, 5, 5, 4, 1, 0, 3, 6, 4, 4};
 
     int expected[10][10] = {
@@ -36,7 +37,7 @@ void runTests() {
         int* result = sortedSquares(inputs[i], sizes[i], &returnSize);
 
         int pass = 1;
-        for (int j = 0; j < sizes[i]; j++) {
+        for (int j = 0; j < returnSize; j++) {
             if (!result || result[j] != expected[i][j]) {
                 pass = 0;
                 break;
